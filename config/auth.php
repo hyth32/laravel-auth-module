@@ -114,4 +114,20 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+    /*
+    |--------------------------------------------------------------------------
+    | API Token Lifetimes
+    |--------------------------------------------------------------------------
+    |
+    | These values define the lifetime of issued API tokens in minutes.
+    | Access tokens should remain short-lived, while refresh tokens can live
+    | longer and be used to rotate the pair.
+    |
+    */
+
+    'tokens' => [
+        'access_ttl' => (int) env('AUTH_ACCESS_TOKEN_TTL', 15),
+        'refresh_ttl' => (int) env('AUTH_REFRESH_TOKEN_TTL', 43200),
+    ],
+
 ];

@@ -2,12 +2,17 @@
 
 namespace App\Actions\Auth;
 
-use Laravel\Sanctum\PersonalAccessToken;
+use App\Models\PersonalAccessToken;
+use App\Services\AuthTokenService;
 
 class RefreshTokenPair
 {
+    public function __construct(
+        private readonly AuthTokenService $tokenService,
+    ) {}
+
     public function handle(PersonalAccessToken $token): array
     {
-        return [];
+        return $this->tokenService->rotatePair($token);
     }
 }
