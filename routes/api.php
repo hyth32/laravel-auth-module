@@ -26,7 +26,7 @@ Route::prefix('v1')->group(function () {
             Route::post('logout', LogoutController::class);
 
             Route::prefix('email')->group(function () {
-                Route::post('verify', VerifyEmailController::class)->middleware('signed');
+                Route::post('verify/{id}/{hash}', VerifyEmailController::class)->whereNumber('id')->middleware('signed');
                 Route::post('resend', ResendVerificationEmailController::class)->middleware('throttle:6,1');
             });
         });
